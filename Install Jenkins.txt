@@ -1,0 +1,44 @@
+Supported OS : CentOS 8 Stream/ Redhat
+
+1. sudo dnf update
+2. sudo dnf install nano
+
+[Install Java]
+3. sudo dnf install java-openjdk-devel
+
+[Add Jenkins Repositories]
+
+4. sudo wget –O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+5. sudo nano /etc/yum.repos.d/jenkins.repo
+
+	[jenkins]
+
+	name=Jenkins-stable
+
+	baseurl=http://pkg.jenkins.io/redhat
+
+	gpgcheck=0
+
+[Install Jenkins]
+
+6. sudo dnf install jenkins
+
+
+[Allow firewall]
+
+7. sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
+8. sudo firewall-cmd --reload
+
+[Start Jenkin] 
+
+9. sudo systemctl enable jenkins
+10. sudo systemctl start jenkins
+
+[Recover Password]
+
+11.sudo cat /var/lib/jenkins/secrets/initialAdmPassword
+
+[Open Jenkins]
+
+12. Open firefox 
+url: serverip:8080
